@@ -56,6 +56,9 @@ Because each of the files is included in a script tag on index.html, these three
     - [ ] add a segment to the snake when the head of the snake reaches an apple
     - [ ] end the game when the snake runs into its own segment
 
+1. Linting
+    - [ ] you may have noticed that a linter (ESLint) is included in this repo. Try to lint your code by fixing all ESLint violations. Feel free to edit the `.eslintrc.json` configuration file if needed.
+
 1. Make it your own!
     - [ ] once you've gotten the core functionality down, feel free to have fun! Modify the functionality, look, even sound of your game. Get creative!
 

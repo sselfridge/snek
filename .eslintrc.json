@@ -3,5 +3,9 @@
     "installedESLint": true,
     "plugins": [
         "react"
-    ]
+    ],
+    "env": {
+        "browser": true,
+        "jquery": true
+    }
 }

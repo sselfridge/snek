@@ -5,6 +5,7 @@ class Head {
   constructor($el) {
     this.node = $('<div id="head"></div>');
     this.currentDirection = 'right';
+    this.prevDirection = 'right';
     this.SPEED = 200;
 
     this.tail = [];
@@ -32,22 +33,49 @@ class Head {
   move() {
     let endGame = false;
     let direction = this.currentDirection;
+    let prev = this.prevDirection;
     let position = this.node.position();
     let tail = this.tail;
     let applesEaten = this.applesEaten;
     this.movedThisTurn = false;
 
+    // //TODO: Tell body what direction we're moving
+    // if(direction === 'left')
 
-    const newBody = new Body($('#board'), position.top, position.left);
+    let tile;
+    if(prev === direction){
+      if(prev === 'left' || prev === 'right'){
+        tile = 'horzi';
+      } else {
+        tile = 'vert';
+      }
+    }else{
+      if ((prev === 'down' && direction === 'right') || (prev === 'left' && direction === 'up')) {
+        tile = 'right-up';
+      } else if ((prev === 'right' && direction === 'up') || (prev === 'down' && direction === 'left')) {
+        tile = 'left-up';
+      } else if ((prev === 'right' && direction === 'down') || (prev === 'up' && direction === 'left')) {
+        tile = 'left-down';
+      } else if ((prev === 'left' && direction === 'down') || (prev === 'up' && direction === 'right')) {
+        tile = 'right-down';
+      } else {
+        console.log('ERROR: SHOULD NOT BE HERE');
+      }
+    }
+
+
+    const newBody = new Body($('#board'), position.top, position.left,tile);
+    
     tail.push(newBody.node);
-    console.log(tail);
+    // console.log(tail);
     if (tail.length > applesEaten) {
       let oldBody = tail.shift();
       oldBody.hide();
       //delete body element (or Z axis it)
     }
 
-    console.log(`Moving ${direction} ${position.left},${position.top}`);
+    console.log(`Moving ${direction} ${position.left},${position.top}.  : Previous Direction:${this.prevDirection}`);
+    if(direction != this.prevDirection) console.log(`CHANGE DIRECTIONS`);
     switch (direction) {
       case 'right':
         position.left += 50;

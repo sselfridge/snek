@@ -26,3 +26,27 @@
   width: 50px;
   position: absolute;
 }
+
+.vert {
+  background-image: url('./assets/vert.png')
+}
+
+.horzi {
+  background-image: url('./assets/horzi.png')
+}
+
+.left-up {
+  background-image: url('./assets/left-up.png')
+}
+
+.right-up {
+  background-image: url('./assets/right-up.png')
+}
+
+.left-down {
+  background-image: url('./assets/left-down.png')
+}
+
+.right-down {
+  background-image: url('./assets/right-down.png')
+}

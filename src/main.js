@@ -1,4 +1,6 @@
 $(document).ready(function () {
+  
+
   let head = new Head($('#board'));
   let apple = new Apple($('#board'));
 
@@ -9,6 +11,9 @@ $(document).ready(function () {
     // ensures only one change of direction can be made per move
     if (head.movedThisTurn === false) {
       console.log(`keyPressed: ${e.keyCode}`);
+      if (e.keyCode === 32 && head.endGame) {
+        newGame();
+      }
       // head.prevDirection = head.currentDirection;
       switch (e.keyCode) {
         case 37:
@@ -53,22 +58,25 @@ $(document).ready(function () {
 
   });
 
-  $('#reset').click(function(){
+  function newGame() {
     //delete head
     //delete apple
     $("#head").remove();
     $('.body').remove();
     $('#apple').remove();
 
+    let highScore = head.highScore;
     head = new Head($('#board'));
     apple = new Apple($('#board'));
 
-    let score = parseInt($('#score').text());
+    head.highScore = highScore;
+    
     $('#score').text(`0`);
 
     $("#endGame").hide();
+  }
 
-  });
+  $('#reset').click(newGame);
   
 
 });

@@ -8,6 +8,9 @@ class Head {
     this.prevDirection = 'right';
     this.SPEED = 200;
 
+    this.highScore = 0;
+    this.endGame = false;
+
     this.tail = [];
     this.applesEaten = 5;
 
@@ -31,7 +34,6 @@ class Head {
 
   // same as Head.prototype.move = function() {...}
   move() {
-    let endGame = false;
     let direction = this.currentDirection;
     let prev = this.prevDirection;
     let position = this.node.position();
@@ -143,22 +145,28 @@ class Head {
     let headOnBody = this.checkForBody(tail, position.top, position.left);
     
     if (headOnBody === true) {
-      endGame = true;
+      this.endGame = true;
       console.log('HIT THE BODY, YOU LOSE');
     }
 
     //check if out of bounds
     if (position.top >= 700 || position.top < 0 || position.left >= 700 || position.left < 0) {
       console.log("OUT OF BOUNDS, YOU LOSE");
-      endGame = true;
+      this.endGame = true;
     }
 
 
 
-    if (endGame === false) {
+    if (this.endGame === false) {
       this.node.css(position);
       setTimeout(this.move.bind(this), this.SPEED);
     } else {
+      let score = parseInt($('#score').text());
+      if (score > this.highScore) {
+        this.highScore = score;
+      }
+      $('#endScore').text(`${score}`);
+      $('#highScore').text(`${this.highScore}`);
       $('#endGame').show();
     }
   }

@@ -4,7 +4,9 @@ class Apple {
     this.node = $('<img id="apple"></img>');
     this.node.attr('src', 'src/assets/apple.jpg');
     $el.append(this.node);
-    this.node.css({ top: 0, left: 0 });
+    const randomTop = Math.floor(Math.random() * 14) * 50;
+    const randomLeft= Math.floor(Math.random() * 14) * 50;
+    this.node.css({ top: randomTop, left: randomLeft });
   }
 
 }

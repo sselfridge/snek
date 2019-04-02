@@ -6,6 +6,14 @@
   position: absolute;
 }
 
+.body {
+  background: black;
+  height: 50px;
+  width: 50px;
+  background-color: black;
+  position: absolute;
+}
+
 #board {
   height: 700px;
   width: 700px;

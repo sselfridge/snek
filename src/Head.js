@@ -127,9 +127,6 @@ class Head {
     // console.log(`top: ${applePosTop}, left: ${applePosLeft}`);
 
     if (position.top === applePosTop && position.left === applePosLeft) {
-
-
-
       let randTop = Math.floor(Math.random() * 14) * 50;
       let randLeft = Math.floor(Math.random() * 14) * 50;
       while (this.checkForBody(tail, randTop, randLeft)) {
@@ -165,6 +162,11 @@ class Head {
       if (score > this.highScore) {
         this.highScore = score;
       }
+
+      let firstTail = this.tail.pop();
+      firstTail.attr('class','dead-snek');
+
+
       $('#endScore').text(`${score}`);
       $('#highScore').text(`${this.highScore}`);
       $('#endGame').show();

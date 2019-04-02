@@ -116,3 +116,7 @@ button:hover {
 .head-right {
   background-image: url('./assets/head-right.png')
 }
+
+.dead-snek{
+  background-image: url('./assets/dead-snek.png')
+}

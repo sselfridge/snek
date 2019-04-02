@@ -61,7 +61,9 @@ class Head {
       } else {
         console.log('ERROR: SHOULD NOT BE HERE');
       }
+      this.prevDirection = direction;
     }
+
 
 
     const newBody = new Body($('#board'), position.top, position.left,tile);
@@ -70,9 +72,32 @@ class Head {
     // console.log(tail);
     if (tail.length > applesEaten) {
       let oldBody = tail.shift();
-      oldBody.hide();
+      // oldBody.hide();
+      oldBody.remove();
       //delete body element (or Z axis it)
     }
+
+    //change head class based on direction to change the snake head icon
+    let headClass;
+    switch (direction) {
+      case 'left':
+      headClass = 'head-left'
+        break;
+      case 'right':
+      headClass = 'head-right'
+        break;
+      case 'up':
+      headClass = 'head-up'
+        break;
+      case 'down':
+      headClass = 'head-down'
+        break;
+    
+      default:
+      console.log("MORE THINGS THAT SHOULDN'T HAPPEN, HOW DID YOU MESS THAT UP!!");
+        break;
+    }
+    this.node.attr("class",headClass);
 
     console.log(`Moving ${direction} ${position.left},${position.top}.  : Previous Direction:${this.prevDirection}`);
     if(direction != this.prevDirection) console.log(`CHANGE DIRECTIONS`);
@@ -110,7 +135,7 @@ class Head {
         randLeft = Math.floor(Math.random() * 14) * 50;        
       }
       $('#apple').css({ top: randTop, left: randLeft });
-      this.applesEaten++;
+      this.applesEaten = this.applesEaten + 5;
       let score = parseInt($('#score').text());
       $('#score').text(`${++score}`);
     }
@@ -133,6 +158,8 @@ class Head {
     if (endGame === false) {
       this.node.css(position);
       setTimeout(this.move.bind(this), this.SPEED);
+    } else {
+      $('#endGame').show();
     }
   }
 

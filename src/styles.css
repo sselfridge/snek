@@ -1,16 +1,16 @@
 #head {
-  background: black;
+  /* background: black; */
   height: 50px;
   width: 50px;
-  background-color: green;
+  /* background-color: green; */
   position: absolute;
 }
 
 .body {
-  background: black;
+  /* background: black; */
   height: 50px;
   width: 50px;
-  background-color: black;
+  /* background-color: black; */
   position: absolute;
 }
 
@@ -25,6 +25,16 @@
   height: 50px;
   width: 50px;
   position: absolute;
+}
+
+#endGame{
+  position: absolute;
+  z-index: 100;
+  width: 400px;
+  height: 300px;
+  top: 200px;
+  left:150px;
+  background-color: red;
 }
 
 .vert {
@@ -49,4 +59,20 @@
 
 .right-down {
   background-image: url('./assets/right-down.png')
+}
+
+.head-up {
+  background-image: url('./assets/head-up.png')
+}
+
+.head-down {
+  background-image: url('./assets/head-down.png')
+}
+
+.head-left {
+  background-image: url('./assets/head-left.png')
+}
+
+.head-right {
+  background-image: url('./assets/head-right.png')
 }

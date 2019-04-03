@@ -128,7 +128,6 @@ class Head {
     //check if we've eaten an apple
     const applePosTop = $('#apple').position().top;
     const applePosLeft = $('#apple').position().left;
-    // console.log(`top: ${applePosTop}, left: ${applePosLeft}`);
 
     if (position.top === applePosTop && position.left === applePosLeft) {
       let randTop = Math.floor(Math.random() * 14) * 50;
@@ -153,14 +152,14 @@ class Head {
       console.log('HIT THE BODY, YOU LOSE');
     }
 
-    //check if out of bounds
+    //check if out of bounds - end game if so
     if (position.top >= 700 || position.top < 0 || position.left >= 700 || position.left < 0) {
       console.log("OUT OF BOUNDS, YOU LOSE");
       this.endGame = true;
     }
 
 
-
+    //
     if (this.endGame === false) {
       this.node.css(position);
       setTimeout(this.move.bind(this), this.SPEED);
@@ -172,7 +171,27 @@ class Head {
       }
 
       //sets head to dead-snek
-      this.node.attr('class', 'dead-snek');
+      let deadSnek;
+      switch (direction) {
+        case 'right':
+          deadSnek = 'dead-snek-right'
+          break;
+        case 'left':
+          deadSnek = 'dead-snek-left'
+          break;
+        case 'up':
+          deadSnek = 'dead-snek-up'
+          break;
+        case 'down':
+          deadSnek = 'dead-snek-down'
+          break;
+        default:
+          console.log("WHAT DID YOU DO, THIS SHOULDN'T HAPPEN");
+          break;
+      }
+
+
+      this.node.attr('class', deadSnek);
 
       //hide the last tail piece since it was overwriting the dead-snek
       let firstTail = this.tail.pop();

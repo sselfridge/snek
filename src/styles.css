@@ -21,18 +21,14 @@ button:hover {
   border: 3px solid yellow;
 }
 #head {
-  /* background: black; */
   height: 50px;
   width: 50px;
-  /* background-color: green; */
   position: absolute;
 }
 
 .body {
-  /* background: black; */
   height: 50px;
   width: 50px;
-  /* background-color: black; */
   position: absolute;
 }
 
@@ -117,6 +113,15 @@ button:hover {
   background-image: url('./assets/head-right.png')
 }
 
-.dead-snek{
-  background-image: url('./assets/dead-snek.png')
+.dead-snek-right{
+  background-image: url('./assets/dead-snek-right.png')
+}
+.dead-snek-left{
+  background-image: url('./assets/dead-snek-left.png')
+}
+.dead-snek-up{
+  background-image: url('./assets/dead-snek-up.png')
+}
+.dead-snek-down{
+  background-image: url('./assets/dead-snek-down.png')
 }

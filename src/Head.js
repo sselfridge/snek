@@ -6,7 +6,7 @@ class Head {
     this.node = $('<div id="head"></div>');
     this.currentDirection = 'right';
     this.prevDirection = 'right';
-    this.SPEED = 200;
+    this.SPEED = 75;
 
     this.highScore = 0;
     this.endGame = false;
@@ -24,6 +24,7 @@ class Head {
     setTimeout(this.move.bind(this), this.SPEED);
   }
 
+  //returns true if the position (top,left) is located in any of the body elements
   checkForBody(tail, top, left) {
     let collision = false;
     tail.forEach(segment => {
@@ -164,34 +165,18 @@ class Head {
       this.node.css(position);
       setTimeout(this.move.bind(this), this.SPEED);
     } else {
+      console.log(`GAME OVER!!! - high score and show endGame popup`);
       let score = parseInt($('#score').text());
       if (score > this.highScore) {
         this.highScore = score;
       }
 
-      // get direction from head.currentDirection
-      let deadSnakeClass;
-      switch (this.currentDirection) {
-        case 'up':
-          deadSnakeClass = 'dead-up';
-          break;
-        case 'down':
-          deadSnakeClass = 'dead-down';
-          break;
-        case 'left':
-          deadSnakeClass = 'dead-left';
-        case 'right':
-          deadSnakeClass = 'dead-right';
-          break;
-        default:
-          console.log('WE HAVE A PROBLEM');
-      }
-      this.node.attr('class', deadSnakeClass);
-      // update class of head
-      // dead-class
-      // delete last body
+      //sets head to dead-snek
+      this.node.attr('class', 'dead-snek');
+
+      //hide the last tail piece since it was overwriting the dead-snek
       let firstTail = this.tail.pop();
-      firstTail.attr('class', 'dead-snek');
+      firstTail.hide();
 
 
       $('#endScore').text(`${score}`);

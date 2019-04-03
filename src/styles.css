@@ -37,8 +37,8 @@ button:hover {
 }
 
 #board {
-  height: 700px;
-  width: 700px;
+  height: 702px;
+  width: 702px;
   border: 1px black solid;
   position: relative;
 }

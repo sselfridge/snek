@@ -17,7 +17,10 @@ class Head {
     this.movedThisTurn = false;
 
     $el.append(this.node);
-    this.node.css({ top: 0, left: 0 });
+    this.node.css({
+      top: 0,
+      left: 0
+    });
     setTimeout(this.move.bind(this), this.SPEED);
   }
 
@@ -45,13 +48,13 @@ class Head {
     // if(direction === 'left')
 
     let tile;
-    if(prev === direction){
-      if(prev === 'left' || prev === 'right'){
+    if (prev === direction) {
+      if (prev === 'left' || prev === 'right') {
         tile = 'horzi';
       } else {
         tile = 'vert';
       }
-    }else{
+    } else {
       if ((prev === 'down' && direction === 'right') || (prev === 'left' && direction === 'up')) {
         tile = 'right-up';
       } else if ((prev === 'right' && direction === 'up') || (prev === 'down' && direction === 'left')) {
@@ -68,8 +71,8 @@ class Head {
 
 
 
-    const newBody = new Body($('#board'), position.top, position.left,tile);
-    
+    const newBody = new Body($('#board'), position.top, position.left, tile);
+
     tail.push(newBody.node);
     // console.log(tail);
     if (tail.length > applesEaten) {
@@ -83,26 +86,26 @@ class Head {
     let headClass;
     switch (direction) {
       case 'left':
-      headClass = 'head-left'
+        headClass = 'head-left'
         break;
       case 'right':
-      headClass = 'head-right'
+        headClass = 'head-right'
         break;
       case 'up':
-      headClass = 'head-up'
+        headClass = 'head-up'
         break;
       case 'down':
-      headClass = 'head-down'
+        headClass = 'head-down'
         break;
-    
+
       default:
-      console.log("MORE THINGS THAT SHOULDN'T HAPPEN, HOW DID YOU MESS THAT UP!!");
+        console.log("MORE THINGS THAT SHOULDN'T HAPPEN, HOW DID YOU MESS THAT UP!!");
         break;
     }
-    this.node.attr("class",headClass);
+    this.node.attr("class", headClass);
 
     console.log(`Moving ${direction} ${position.left},${position.top}.  : Previous Direction:${this.prevDirection}`);
-    if(direction != this.prevDirection) console.log(`CHANGE DIRECTIONS`);
+    if (direction != this.prevDirection) console.log(`CHANGE DIRECTIONS`);
     switch (direction) {
       case 'right':
         position.left += 50;
@@ -131,16 +134,19 @@ class Head {
       let randLeft = Math.floor(Math.random() * 14) * 50;
       while (this.checkForBody(tail, randTop, randLeft)) {
         randTop = Math.floor(Math.random() * 14) * 50;
-        randLeft = Math.floor(Math.random() * 14) * 50;        
+        randLeft = Math.floor(Math.random() * 14) * 50;
       }
-      $('#apple').css({ top: randTop, left: randLeft });
+      $('#apple').css({
+        top: randTop,
+        left: randLeft
+      });
       this.applesEaten = this.applesEaten + 5;
       let score = parseInt($('#score').text());
       $('#score').text(`${++score}`);
     }
 
     let headOnBody = this.checkForBody(tail, position.top, position.left);
-    
+
     if (headOnBody === true) {
       this.endGame = true;
       console.log('HIT THE BODY, YOU LOSE');
@@ -163,8 +169,29 @@ class Head {
         this.highScore = score;
       }
 
+      // get direction from head.currentDirection
+      let deadSnakeClass;
+      switch (this.currentDirection) {
+        case 'up':
+          deadSnakeClass = 'dead-up';
+          break;
+        case 'down':
+          deadSnakeClass = 'dead-down';
+          break;
+        case 'left':
+          deadSnakeClass = 'dead-left';
+        case 'right':
+          deadSnakeClass = 'dead-right';
+          break;
+        default:
+          console.log('WE HAVE A PROBLEM');
+      }
+      this.node.attr('class', deadSnakeClass);
+      // update class of head
+      // dead-class
+      // delete last body
       let firstTail = this.tail.pop();
-      firstTail.attr('class','dead-snek');
+      firstTail.attr('class', 'dead-snek');
 
 
       $('#endScore').text(`${score}`);

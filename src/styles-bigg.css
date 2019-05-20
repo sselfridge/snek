@@ -1,0 +1,136 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif
+}
+
+header {
+  width: 700px;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+button {
+  padding: 15px;
+  font-size: 30px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+button:hover {
+  border: 3px solid yellow;
+}
+#head {
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  background-color: black;
+}
+
+#derp{
+  margin: 0 80px;
+}
+
+.body {
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  background-color: rgb(85, 85, 85);
+
+}
+
+#board {
+  height: 282px;
+  width: 282px;
+  border: 1px black solid;
+  position: relative;
+}
+
+#apple {
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  background-color:rgb(0, 255, 0);
+}
+
+#endGame{
+  position: absolute;
+  z-index: 100;
+  width: 150px;
+  height: 125px;
+  top: 100px;
+  left: 70px;
+  background-color: rgb(0, 160, 253);
+  border-radius: 10px;
+  line-height: 35px;
+}
+
+.highScore{
+  float: right;
+}
+
+.inner {
+  height: 200px;
+  text-align: center;
+  margin-top: 30px;
+  padding: 0;
+}
+
+#reset {
+  display: block;
+  margin: auto;
+  margin-top: 10px;
+}
+
+/* .vert {
+  background-image: url('./assets/vert.png')
+}
+
+.horzi {
+  background-image: url('./assets/horzi.png')
+}
+
+.left-up {
+  background-image: url('./assets/left-up.png')
+}
+
+.right-up {
+  background-image: url('./assets/right-up.png')
+}
+
+.left-down {
+  background-image: url('./assets/left-down.png')
+}
+
+.right-down {
+  background-image: url('./assets/right-down.png')
+}
+
+.head-up {
+  background-image: url('./assets/head-up.png')
+}
+
+.head-down {
+  background-image: url('./assets/head-down.png')
+}
+
+.head-left {
+  background-image: url('./assets/head-left.png')
+}
+
+.head-right {
+  background-image: url('./assets/head-right.png')
+}
+
+.dead-snek-right{
+  background-image: url('./assets/dead-snek-right.png')
+}
+.dead-snek-left{
+  background-image: url('./assets/dead-snek-left.png')
+}
+.dead-snek-up{
+  background-image: url('./assets/dead-snek-up.png')
+}
+.dead-snek-down{
+  background-image: url('./assets/dead-snek-down.png')
+} */

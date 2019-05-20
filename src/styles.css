@@ -62,6 +62,7 @@ button:hover {
   left: 70px;
   background-color: rgb(0, 160, 253);
   border-radius: 10px;
+  line-height: 35px;
 }
 
 .highScore{
@@ -78,7 +79,7 @@ button:hover {
 #reset {
   display: block;
   margin: auto;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 /* .vert {

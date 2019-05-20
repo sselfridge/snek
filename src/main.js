@@ -10,7 +10,7 @@ $(document).ready(function () {
     //moved this turn is reset to false at the beginning of the game loop
     // ensures only one change of direction can be made per move
     e.preventDefault();
-    console.log(`keyPressed: ${e.keyCode}`);
+    // console.log(`keyPressed: ${e.keyCode}`);
 
 
     //reset game with spacebar if its over

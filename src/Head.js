@@ -1,4 +1,5 @@
 // creates a constructor function - research ES6 classes
+const tileSize = 20;
 class Head {
 
   // this is what's called when you use the "new" keyword
@@ -82,43 +83,22 @@ class Head {
       oldBody.remove();
       //delete body element (or Z axis it)
     }
-
-    //change head class based on direction to change the snake head icon
-    let headClass;
-    switch (direction) {
-      case 'left':
-        headClass = 'head-left'
-        break;
-      case 'right':
-        headClass = 'head-right'
-        break;
-      case 'up':
-        headClass = 'head-up'
-        break;
-      case 'down':
-        headClass = 'head-down'
-        break;
-
-      default:
-        console.log("MORE THINGS THAT SHOULDN'T HAPPEN, HOW DID YOU MESS THAT UP!!");
-        break;
-    }
-    this.node.attr("class", headClass);
+  
 
     console.log(`Moving ${direction} ${position.left},${position.top}.  : Previous Direction:${this.prevDirection}`);
     if (direction != this.prevDirection) console.log(`CHANGE DIRECTIONS`);
     switch (direction) {
       case 'right':
-        position.left += 50;
+        position.left += tileSize;
         break;
       case 'left':
-        position.left -= 50;
+        position.left -= tileSize;
         break;
       case 'up':
-        position.top -= 50;
+        position.top -= tileSize;
         break;
       case 'down':
-        position.top += 50;
+        position.top += tileSize;
         break;
       default:
         console.log("WHAT DID YOU DO, THIS SHOULDN'T HAPPEN");
@@ -130,11 +110,11 @@ class Head {
     const applePosLeft = $('#apple').position().left;
 
     if (position.top === applePosTop && position.left === applePosLeft) {
-      let randTop = Math.floor(Math.random() * 14) * 50;
-      let randLeft = Math.floor(Math.random() * 14) * 50;
+      let randTop = Math.floor(Math.random() * 14) * tileSize;
+      let randLeft = Math.floor(Math.random() * 14) * tileSize;
       while (this.checkForBody(tail, randTop, randLeft)) {
-        randTop = Math.floor(Math.random() * 14) * 50;
-        randLeft = Math.floor(Math.random() * 14) * 50;
+        randTop = Math.floor(Math.random() * 14) * tileSize;
+        randLeft = Math.floor(Math.random() * 14) * tileSize;
       }
       $('#apple').css({
         top: randTop,
@@ -153,7 +133,7 @@ class Head {
     }
 
     //check if out of bounds - end game if so
-    if (position.top >= 700 || position.top < 0 || position.left >= 700 || position.left < 0) {
+    if (position.top >= tileSize * 14 || position.top < 0 || position.left >= tileSize * 14 || position.left < 0) {
       console.log("OUT OF BOUNDS, YOU LOSE");
       this.endGame = true;
     }
@@ -170,28 +150,7 @@ class Head {
         this.highScore = score;
       }
 
-      //sets head to dead-snek
-      let deadSnek;
-      switch (direction) {
-        case 'right':
-          deadSnek = 'dead-snek-right'
-          break;
-        case 'left':
-          deadSnek = 'dead-snek-left'
-          break;
-        case 'up':
-          deadSnek = 'dead-snek-up'
-          break;
-        case 'down':
-          deadSnek = 'dead-snek-down'
-          break;
-        default:
-          console.log("WHAT DID YOU DO, THIS SHOULDN'T HAPPEN");
-          break;
-      }
 
-
-      this.node.attr('class', deadSnek);
 
       //hide the last tail piece since it was overwriting the dead-snek
       let firstTail = this.tail.pop();
